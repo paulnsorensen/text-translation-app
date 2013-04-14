@@ -3,17 +3,23 @@ class EndtextViewController < UIViewController
   
   def viewDidLoad
     super
-    view.backgroundColor = 0xa66110.uicolor
-    self.navigationItem.rightBarButtonItem = UIBarButtonItem.done {self.dismissViewControllerAnimated true, completion: nil}
+    view.backgroundColor = "subtle_white_feathers.png".uicolor
+    self.navigationItem.leftBarButtonItem = UIBarButtonItem.done {self.dismissViewControllerAnimated true, completion: nil}
     self.title = "Heskyized!"
     
-    header_frame = view.bounds.down(30).width(view.bounds.width).height(view.bounds.height)
+    header_frame = CGRect.make(x: 10, y:50, width: 300, height: 200)
     header_label = UITextView.alloc.initWithFrame header_frame
     header_label.text = endtext
-    header_label.textColor = UIColor.whiteColor
-    header_label.font = :bold.uifont(20)
+    header_label.editable = false 
+    header_label.textColor = 0xa45252.uicolor
+    header_label.font = :bold.uifont(18)
     header_label.backgroundColor = :clear.uicolor
     view << header_label 
+    
+    image_frame = view.bounds.down(20).width(view.bounds.width).height(view.bounds.height)
+    hesky_image = UIImageView.alloc.initWithFrame image_frame
+    hesky_image.image = "heskytalk.png".uiimage
+    view << hesky_image
       
   end
   
