@@ -3,14 +3,15 @@ class EndScreen < ProMotion::Screen
   attr_accessor :endtext
   
   def on_load
-    set_nav_bar_right_button "Close", action: :close_screen
+    set_nav_bar_left_button "Close", action: :close_screen
+    set_nav_bar_right_button "Share", action: :share
     self.endtext 
     
-    view.backgroundColor = 0xa66110.uicolor
+    view.backgroundColor = "subtle_white_feathers.png".uicolor
     header_frame = view.bounds.down(30).width(view.bounds.width).height(view.bounds.height)
     header_label = UITextView.alloc.initWithFrame header_frame
     header_label.text = translate(endtext)
-    header_label.textColor = UIColor.whiteColor
+    header_label.textColor = 0x428342.uicolor
     header_label.font = :bold.uifont(20)
     header_label.backgroundColor = :clear.uicolor
     view << header_label 
@@ -36,6 +37,10 @@ class EndScreen < ProMotion::Screen
   
   def close_screen
     close
+  end
+  
+  def share
+    if defined?(SLComposeViewController)
   end
   
 end
