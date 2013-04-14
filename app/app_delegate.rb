@@ -1,10 +1,7 @@
-class AppDelegate
-  def application(application, didFinishLaunchingWithOptions:launchOptions)
-    @window = UIWindow.alloc.initWithFrame(UIScreen.mainScreen.bounds)
-    @window.makeKeyAndVisible
-    hesky = HeskyizeViewController.alloc.init
-    @window.rootViewController = UINavigationController.alloc.initWithRootViewController(hesky)
-
-    true
+class AppDelegate < ProMotion::AppDelegateParent
+  
+  def on_load(app, options)
+    open TextScreen.new(nav_bar: true)
   end
+  
 end
