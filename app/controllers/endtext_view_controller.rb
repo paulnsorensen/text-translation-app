@@ -1,5 +1,6 @@
 class EndtextViewController < UIViewController
   attr_accessor :endtext
+  attr_accessor :hesky
   
   def viewDidLoad
     super
@@ -23,9 +24,9 @@ class EndtextViewController < UIViewController
       
   end
   
-  def initWithText(inputtext)
+  def initWithText(hesky)
     initWithNibName(nil, bundle:nil)
-    self.endtext = heskyize(inputtext)
+    self.endtext = hesky.heskyize
     self
   end
 
@@ -36,24 +37,6 @@ class EndtextViewController < UIViewController
 
   def shouldAutorotateToInterfaceOrientation(interfaceOrientation)
     interfaceOrientation == UIInterfaceOrientationPortrait
-  end
-  
-  def heskyize(text)
-    text = text.downcase.gsub('you', 'u')
-    text.gsub!('(', "(  ")
-    text.gsub!(')', "  )")
-    text.gsub!('physical', "phyzical")
-    text.gsub!('especially', "esp")
-    text.gsub!('schedule', "scheduale")
-    text.gsub!('we would', "would")
-    text.gsub!('i would', "would")
-    text.gsub!('we want', "want")
-    text.gsub!('i want', "want")  
-    text.gsub!('you\'re', "ur")
-    text.gsub!('.') {rand > 0.6 ? "-" : "." }
-    text.gsub!(' ') {rand > 0.8 ? "  " : " " }
-    text = text.insert(text.length, " :)")
-    return text
   end
   
 end

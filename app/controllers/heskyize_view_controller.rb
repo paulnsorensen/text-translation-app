@@ -54,10 +54,11 @@ class HeskyizeViewController < UIViewController
   end
   
   def openTranslate
-    @inputtext = @edit_label.text
+    @hesky = Hesky.new
+    @hesky.text = @edit_label.text
     present_modal(
       UINavigationController.alloc.initWithRootViewController(
-      EndtextViewController.alloc.initWithText(@inputtext)))
+      EndtextViewController.alloc.initWithText(@hesky)))
   end
   
 end
