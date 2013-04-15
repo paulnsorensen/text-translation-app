@@ -9,18 +9,15 @@ class HeskyizeViewController < UIViewController
     view.backgroundColor = "green-fibers.png".uicolor
     self.title = "Heskyize?"
     self.navigationItem.rightBarButtonItem = UIBarButtonItem.titled('Translate') {openTranslate}
-    # You'll need to create another UINavigationController, push your modal_controller into it, and present that
     
+    # Set up a scrollable view so that the keyboard does not block the view 
     scroll_frame = view.bounds
     scroll_view = UIScrollView.alloc.initWithFrame scroll_frame
-    scroll_view.contentSize = CGSizeMake(scroll_frame.width, scroll_frame.height*2)
+    scroll_view.contentSize = CGSizeMake(scroll_frame.width, scroll_frame.height*1.3)
     scroll_view.scrollEnabled = true
     view << scroll_view
-    # 
-    # subframe = view.bounds
-    # subframe_view = UIView.alloc.initWithFrame subframe
-    # scroll_view << subframe_view
-    
+
+    # Set up the view and label for the instruction sheet 
     header_frame = view.bounds.down(10).width(view.bounds.width).height(70)
     header_label = UITextView.alloc.initWithFrame header_frame
     header_label.text = "In the text box below, what text do you want to translate?"
@@ -30,9 +27,12 @@ class HeskyizeViewController < UIViewController
     header_label.backgroundColor = :clear.uicolor
     scroll_view << header_label 
     
-    edit_frame = view.bounds.down(80).width(view.bounds.width).height(view.bounds.height)
+    # Add a subview so that you can overlay the text input field
+    edit_frame = header_frame.below(0).width(view.bounds.width).height(scroll_view.bounds.height)
     subview = UIView.alloc.initWithFrame edit_frame
     scroll_view << subview
+    
+    # Add the text input field as a UITextView within an anonymous frame
     @edit_label = UITextView.alloc.initWithFrame(edit_frame.below(5).width(300).centered_in(edit_frame))
     @edit_label.editable = true
     @edit_label.backgroundColor = "subtle_white_feathers.png".uicolor
@@ -56,9 +56,13 @@ class HeskyizeViewController < UIViewController
   def openTranslate
     @hesky = Hesky.new
     @hesky.text = @edit_label.text
-    present_modal(
-      UINavigationController.alloc.initWithRootViewController(
-      EndtextViewController.alloc.initWithText(@hesky)))
+    
+    # Instantiate a version of the new view controller with self create init method
+    final = EndtextViewController.alloc.initWithText(@hesky)
+    self.navigationController.pushViewController(final, animated: true)
+    
+    # present_modal(UINavigationController.alloc.initWithRootViewController(final))
+    # You'll need to create another UINavigationController, push your modal_controller into it, and present that
   end
   
 end

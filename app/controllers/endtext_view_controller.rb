@@ -5,7 +5,10 @@ class EndtextViewController < UIViewController
   def viewDidLoad
     super
     view.backgroundColor = "subtle_white_feathers.png".uicolor
-    self.navigationItem.leftBarButtonItem = UIBarButtonItem.done {self.dismissViewControllerAnimated true, completion: nil}
+    
+    # Code for the dismiss view controller if modal is activated. Remove for normal master-detail functionality 
+    # self.navigationItem.leftBarButtonItem = UIBarButtonItem.done {self.dismissViewControllerAnimated true, completion: nil}
+    self.navigationItem.rightBarButtonItem = UIBarButtonItem.titled("Share") {share}
     self.title = "Heskyized!"
     
     header_frame = CGRect.make(x: 10, y:50, width: 300, height: 200)
@@ -37,6 +40,14 @@ class EndtextViewController < UIViewController
 
   def shouldAutorotateToInterfaceOrientation(interfaceOrientation)
     interfaceOrientation == UIInterfaceOrientationPortrait
+  end
+  
+  def share
+    # implements the sharing page that lets you email stuff
+    activityItems = [endtext]
+    shareController = UIActivityViewController.alloc.initWithActivityItems(activityItems, applicationActivities: nil)
+    self.presentViewController(shareController, animated: true, completion: nil)
+    
   end
   
 end
