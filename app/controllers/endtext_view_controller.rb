@@ -11,7 +11,7 @@ class EndtextViewController < UIViewController
     self.navigationItem.rightBarButtonItem = UIBarButtonItem.titled("Share") {share}
     self.title = "Heskyized!"
     
-    header_frame = CGRect.make(x: 10, y:25, width: 300, height: 200)
+    header_frame = CGRect.make(x: 13, y:25, width: 300, height: 200)
     header_label = UITextView.alloc.initWithFrame header_frame
     header_label.text = endtext
     header_label.editable = false 
