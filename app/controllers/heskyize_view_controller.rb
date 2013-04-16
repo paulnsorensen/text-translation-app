@@ -25,6 +25,7 @@ class HeskyizeViewController < UIViewController
     header_label.font = :bold.uifont(20)
     header_label.textColor = UIColor.whiteColor
     header_label.backgroundColor = :clear.uicolor
+    header_label.on_tap {backgroundTouched}
     scroll_view << header_label 
     
     # Add a subview so that you can overlay the text input field
@@ -53,6 +54,7 @@ class HeskyizeViewController < UIViewController
     interfaceOrientation == UIInterfaceOrientationPortrait
   end
   
+  # The button method used to pass the input text and make a new screen
   def openTranslate
     @hesky = Hesky.new
     @hesky.text = @edit_label.text
@@ -63,6 +65,11 @@ class HeskyizeViewController < UIViewController
     
     # present_modal(UINavigationController.alloc.initWithRootViewController(final))
     # You'll need to create another UINavigationController, push your modal_controller into it, and present that
+  end
+  
+  # The method that is called in order to drop off the keyboard from the screen
+  def backgroundTouched
+    @edit_label.resignFirstResponder
   end
   
 end

@@ -11,7 +11,7 @@ class EndtextViewController < UIViewController
     self.navigationItem.rightBarButtonItem = UIBarButtonItem.titled("Share") {share}
     self.title = "Heskyized!"
     
-    header_frame = CGRect.make(x: 10, y:50, width: 300, height: 200)
+    header_frame = CGRect.make(x: 10, y:25, width: 300, height: 200)
     header_label = UITextView.alloc.initWithFrame header_frame
     header_label.text = endtext
     header_label.editable = false 
@@ -20,7 +20,7 @@ class EndtextViewController < UIViewController
     header_label.backgroundColor = :clear.uicolor
     view << header_label 
     
-    image_frame = view.bounds.down(20).width(view.bounds.width).height(view.bounds.height)
+    image_frame = view.bounds.down(-5).width(view.bounds.width).height(view.bounds.height)
     hesky_image = UIImageView.alloc.initWithFrame image_frame
     hesky_image.image = "heskytalk.png".uiimage
     view << hesky_image
