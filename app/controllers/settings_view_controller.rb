@@ -9,7 +9,7 @@ class SettingsViewController < UIViewController
     table_view.dataSource = self 
     view << table_view
     
-    @data_settings = ["Capitalization", "Parantheses Spaces", "Remove Pronouns", "Phyzicals", "Especially", "Happy Faces"]
+    @data_settings = ["Capitalization", "Space Parantheses", "Remove Pronouns", "Phyzicals", "Especially", "Happy Faces"]
 
   end
 
@@ -20,7 +20,7 @@ class SettingsViewController < UIViewController
     end
     cell.textLabel.text = @data_settings[indexPath.row]
     @switch = UISwitch.alloc.init
-    @switch.addTarget(self, action: '#{@data_settings[indexPath.row]}Toggle', forControlEvents:UIControlEventValueChanged)
+    @switch.addTarget(self, action: 'happy_facesToggle', forControlEvents:UIControlEventValueChanged)
     @switch.setOn(true, animated:true)
     cell.accessoryView = @switch
     
@@ -42,5 +42,10 @@ class SettingsViewController < UIViewController
 
   def shouldAutorotateToInterfaceOrientation(interfaceOrientation)
     interfaceOrientation == UIInterfaceOrientationPortrait
+  end
+  
+  def happy_facesToggle
+    App::Persistence['faces'] = !App::Persistence['faces']
+    puts App::Persistence['faces']
   end
 end

@@ -3,6 +3,7 @@ $:.unshift("/Library/RubyMotion/lib")
 require 'motion/project'
 require 'bundler'
 require 'sugarcube-gestures'
+require 'bubble-wrap'
 Bundler.require
 
 Motion::Project::App.setup do |app|

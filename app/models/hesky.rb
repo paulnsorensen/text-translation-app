@@ -16,7 +16,9 @@ class Hesky
     self.text.gsub!('you\'re', "ur")
     self.text.gsub!('.') {rand > 0.6 ? "-" : "." }
     self.text.gsub!(' ') {rand > 0.8 ? "  " : " " }
-    self.text = self.text.insert(text.length, " :)")
+    if App::Persistence['faces'] 
+      self.text = self.text.insert(text.length, " :)") 
+    end
     return self.text
   end
   
