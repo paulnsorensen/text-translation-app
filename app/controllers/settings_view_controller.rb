@@ -9,7 +9,7 @@ class SettingsViewController < UIViewController
     table_view.dataSource = self 
     view << table_view
     
-    @data_settings = ["Capitalization", "Space Parantheses", "Remove Pronouns", "Phyzicals", "Especially", "Happy Faces"]
+    @data_settings = ["Capitalization", "Spaced Parantheses", "Remove Pronouns", "Phyzicals", "Especially", "Happy Faces"]
 
   end
 

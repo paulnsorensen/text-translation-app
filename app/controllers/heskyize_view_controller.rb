@@ -7,7 +7,7 @@ class HeskyizeViewController < UIViewController
     super
     # Do any additional setup after loading the view.
     view.backgroundColor = "green-fibers.png".uicolor
-    self.title = "Heskyize?"
+    self.title = "Bad Boss Email"
     self.navigationItem.rightBarButtonItem = UIBarButtonItem.titled('Translate') {openTranslate}
     
     # Set up a scrollable view so that the keyboard does not block the view 
@@ -20,7 +20,7 @@ class HeskyizeViewController < UIViewController
     # Set up the view and label for the instruction sheet 
     header_frame = view.bounds.down(10).width(view.bounds.width).height(70)
     header_label = UITextView.alloc.initWithFrame header_frame
-    header_label.text = "In the text box below, what text do you want to translate?"
+    header_label.text = "Write in below the text you want to translate!"
     header_label.editable = false
     header_label.font = :bold.uifont(20)
     header_label.textColor = UIColor.whiteColor

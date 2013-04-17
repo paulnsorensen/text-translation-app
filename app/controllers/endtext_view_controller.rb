@@ -22,7 +22,7 @@ class EndtextViewController < UIViewController
     
     image_frame = view.bounds.down(-5).width(view.bounds.width).height(view.bounds.height)
     hesky_image = UIImageView.alloc.initWithFrame image_frame
-    hesky_image.image = "heskytalk.png".uiimage
+    hesky_image.image = "snob_email.png".uiimage
     view << hesky_image
       
   end

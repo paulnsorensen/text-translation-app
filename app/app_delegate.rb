@@ -5,6 +5,9 @@ class AppDelegate
     trans_controller = UINavigationController.alloc.initWithRootViewController(HeskyizeViewController.alloc.init)
     settings = UINavigationController.alloc.initWithRootViewController(SettingsViewController.alloc.init)
     
+    # Code for the customization of the tab bar 
+    UINavigationBar.appearance.tintColor = 0x666053.uicolor
+    
     tab_controller = UITabBarController.alloc.init
     
     # Note that the tab bar image has to be 320 x 49 pixels. 
